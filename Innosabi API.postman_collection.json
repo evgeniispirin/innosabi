@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "8653d1f1-af41-4e38-8051-a8dffc07cff9",
+		"name": "Innosabi API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LogIn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"admin@innosabi.com\",\n\"password\": \"password\" \n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Projects",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbm5vc2FiaSIsInN1YiI6MSwiaWF0IjoxNTYzODkxOTQwLCJleHAiOjE1NjM4OTU1NDB9.vnJSjnZr-Ots_PTnES3GrO_p1TyXYIHQmtGxM4igGdc\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Project by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbm5vc2FiaSIsInN1YiI6MSwiaWF0IjoxNTYzODk2ODQ5LCJleHAiOjE1NjM5MDA0NDl9.U6mpTbeW3WJJVfl7MPpWU8MhVokCcgGXUHahdJ4iYV4\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/api/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"api",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Project by id With Columns",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbm5vc2FiaSIsInN1YiI6MSwiaWF0IjoxNTYzODk2ODQ5LCJleHAiOjE1NjM5MDA0NDl9.U6mpTbeW3WJJVfl7MPpWU8MhVokCcgGXUHahdJ4iYV4\",\n     \"include\" : \"name,description\"\n    \n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/api/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"api",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Project",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbm5vc2FiaSIsInN1YiI6MSwiaWF0IjoxNTYzOTAwMTYwLCJleHAiOjE1NjM5MDM3NjB9.xOXhgsjdLdMBdSN2vrY8Hoad8EwsSDf47uYpWkAh5Dk\",\n\t\"name\": \"Super Project\",\n\t\"description\" : \"Blah...blah...blah!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/api/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Project",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbm5vc2FiaSIsInN1YiI6MSwiaWF0IjoxNTYzOTAwMTYwLCJleHAiOjE1NjM5MDM3NjB9.xOXhgsjdLdMBdSN2vrY8Hoad8EwsSDf47uYpWkAh5Dk\",\n\t\"name\": \"Updated Super Project\",\n\t\"description\" : \"Updated Blah...blah...blah!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/api/projects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"api",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpbm5vc2FiaSIsInN1YiI6MSwiaWF0IjoxNTYzOTAwMTYwLCJleHAiOjE1NjM5MDM3NjB9.xOXhgsjdLdMBdSN2vrY8Hoad8EwsSDf47uYpWkAh5Dk\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/api/projects/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"api",
+						"projects",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f7ecddce-5547-49e7-82a3-aa2fbdc2c4eb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "517097b2-9f5a-4b67-8695-9238cd96800c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
