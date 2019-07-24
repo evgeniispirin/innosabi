@@ -2,7 +2,7 @@
 
 
 $router->get('/', function () use ($router) {
-    return " Innosabi. ";
+    return "Innosabi.";
 });
 
 $router->post('auth/login', ['uses' => 'AuthController@authenticate']);

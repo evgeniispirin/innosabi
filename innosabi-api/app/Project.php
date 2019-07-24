@@ -19,6 +19,6 @@ class Project extends Model
      * @var array
      */
     protected $hidden = [
-        'id', 'updated_at',
+        'updated_at',
     ];
 }
