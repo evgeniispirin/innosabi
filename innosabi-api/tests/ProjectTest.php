@@ -65,6 +65,59 @@ class ProjectTest extends TestCase
             ]);
     }
 
+    public function testProjectsGetSpecificProject()
+    {
+        $project = factory(Project::class)->create([
+            'name' => "Project",
+            'description' => "Description"
+        ]);
+
+        $user = factory(User::class)->create([
+            'email' => 'user@test.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $jsonBody = [
+            'token' => $this->jwt($user)
+        ];
+
+        $this
+            ->json('GET', '/api/projects/' . $project->id, $jsonBody)
+            ->seeStatusCode(200)
+            ->seeJsonEquals([
+                'created_at' => $project->created_at->format('Y-m-d H:i:s'),
+                'description' => 'Description',
+                'id' => 1,
+                'name' => 'Project',
+            ]);
+    }
+
+    public function testProjectsGetSpecificProjectWithArguments()
+    {
+        $project = factory(Project::class)->create([
+            'name' => "Project",
+            'description' => "Description"
+        ]);
+
+        $user = factory(User::class)->create([
+            'email' => 'user@test.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $jsonBody = [
+            'token' => $this->jwt($user),
+            'include' => 'name,description',
+        ];
+
+        $this
+            ->json('GET', '/api/projects/' . $project->id, $jsonBody)
+            ->seeStatusCode(200)
+            ->seeJsonEquals([
+                'description' => 'Description',
+                'name' => 'Project',
+            ]);
+    }
+
     public function testProjectCreatedCorrectly()
     {
         $user = factory(User::class)->create([
