@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\JWTTrait;
 use Validator;
 use App\User;
-use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
-use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class AuthController extends BaseController
 {
+    use JWTTrait;
+
     /**
      * The request instance.
      *
@@ -26,23 +27,6 @@ class AuthController extends BaseController
      */
     public function __construct(Request $request) {
         $this->request = $request;
-    }
-    /**
-     * Create a new token.
-     *
-     * @param  \App\User   $user
-     * @return string
-     */
-    protected function jwt(User $user) {
-        $payload = [
-            'iss' => "innosabi",
-            'sub' => $user->id,
-            'iat' => time(),
-            'exp' => time() + 60*60
-        ];
-
-        // `JWT_SECRET` - the way to decode the token in the future.
-        return JWT::encode($payload, env('JWT_SECRET'));
     }
 
     /**
